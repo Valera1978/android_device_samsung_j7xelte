@@ -31,9 +31,9 @@ repo init -u git://github.com/LineageOS/android.git -b cm-14.1
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="Valera1978/android_device_samsung_gtaxllte" path="device/samsung/j7xelte" remote="github" />
-  <project name="Valera1978/android_kernel_samsung_exynos7870" path="kernel/samsung/j7xelte" remote="github" />
-  <project name="Valera1978/android_vendor_samsung_gtaxllte" path="vendor/samsung/j7xelte" remote="github" />
+  <project name="Valera1978/android_device_samsung_j7xelte" path="device/samsung/j7xelte" remote="github" />
+  <project name="Valera1978/android_kernel_samsung_j7xelte" path="kernel/samsung/j7xelte" remote="github" />
+  <project name="Valera1978/android_vendor_samsung_j7xelte" path="vendor/samsung/j7xelte" remote="github" />
   <project name="Valera1978/android_hardware_samsung_slsi-cm_exynos" path="hardware/samsung_slsi-cm/exynos" remote="github" />
   <project name="Valera1978/android_hardware_samsung_slsi-cm_exynos7870" path="hardware/samsung_slsi-cm/exynos7870" remote="github" />
   <project name="LineageOS/android_external_stlport" path="external/stlport" remote="github" />
