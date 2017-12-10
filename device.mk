@@ -20,9 +20,14 @@ LOCAL_PATH := device/samsung/j7xelte
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
+TARGET_BOOTANIMATION_HALF_RES := true
 
 # Flat device tree for boot image
 #PRODUCT_PACKAGES += \
@@ -69,10 +74,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
 PRODUCT_PACKAGES += \
     gralloc.exynos5
 
@@ -83,10 +84,6 @@ PRODUCT_PACKAGES += \
 # hardware/samsung/AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
     AdvancedDisplay
-
-# Camera
-#PRODUCT_PACKAGES += \
-#    Snap
 
 # Radio
 PRODUCT_PACKAGES += \
@@ -127,11 +124,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths_rev03.xml:system/etc/mixer_paths_rev03.xml
     
 PRODUCT_PACKAGES += \
-    audio.primary.universal7870_32 \
+    audio.primary.universal7870 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    libtfa98xx_32 \
     libtinycompress
 
 # Media
@@ -170,12 +166,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     su
 
-#ADB
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.debuggable=1 \
-    persist.service.adb.enable=1
+# Offmode charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    cm_charger_res_images
 
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)

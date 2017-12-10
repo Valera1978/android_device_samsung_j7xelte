@@ -1,10 +1,3 @@
-ro.product.model=SM-J710F
-ro.product.device=j7xelte
-ro.product.name=j7xeltexx
-ro.build.product=j7xelte
-ro.build.description=j7xeltexx-user 7.0 NRD90M J710FXXU3BQJ3 release-keys
-ro.build.fingerprint=samsung/j7xeltexx/j7xelte:7.0/NRD90M/J710FXXU3BQJ3:user/release-keys
-
 # Audio
 af.fast_track_multiplier=1
 audio_hal.force_voice_config=wide
@@ -48,21 +41,19 @@ ro.hwui.text_small_cache_width=1024
 ro.hwui.text_small_cache_height=512
 ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=1024
+
 # Radio
 persist.radio.sib16_support=0
 rild.libpath=/system/lib/libsec-ril.so
 rild.libpath2=/system/lib/libsec-ril-dsds.so
-ro.ril.hsxpa=1
-ro.ril.gprsclass=10
-ro.ril.telephony.mqanelements=6
 ro.telephony.default_network=9
 ro.telephony.ril_class=SlteRIL
-
-# Wifi
-wifi.interface=wlan0
+ro.ril.gprsclass=10
+ro.ril.hsxpa=1
+ro.ril.telephony.mqanelements=6
 
 # read DS/SS property
 import /efs/factory.prop
-######################################
-# Camera
-#camera2.portability.force_api=1
+
+# Wifi
+wifi.interface=wlan0
