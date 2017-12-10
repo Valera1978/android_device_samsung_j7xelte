@@ -23,7 +23,7 @@ TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-BLOCK_BASED_OTA:= false
+#BLOCK_BASED_OTA:= false
 
 # Platform
 TARGET_BOARD_PLATFORM := exynos5
@@ -32,9 +32,6 @@ TARGET_SOC := exynos7870
 TARGET_BOOTLOADER_BOARD_NAME := universal7870
 
 # CPU
-FORCE_32_BIT := true
-
-TARGET_BOARD_SUFFIX := _32
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
@@ -43,7 +40,6 @@ TARGET_CPU_VARIANT := cortex-a53
 TARGET_CPU_CORTEX_A53 := true
 
 # Binder
-#TARGET_USES_64_BIT_BINDER := true
 TARGET_USES_64_BIT_BINDER := false
 
 # Extracted with libbootimg
@@ -68,18 +64,29 @@ TARGET_KERNEL_CONFIG := lineage_j7xelte_defconfig
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 
 # Partitions
+
+#Filesystem            1K-blocks    Used Available Use% Mounted on
+#rootfs                   851220    3176    848044   1% /
+#tmpfs                    934160     528    933632   1% /dev
+#tmpfs                    934160       0    934160   0% /mnt
+#/dev/block/mmcblk0p20   2975760  671072   2304688  23% /system
+#/dev/block/mmcblk0p21    197472     184    197288   1% /cache
+#/dev/block/mmcblk0p24  11467980 2948308   8519672  26% /data
+#/dev/block/mmcblk0p3      16048    2444     13604  16% /efs
+#/dev/block/mmcblk0p4       3952     548      3404  14% /cpefs
+#/dev/block/mmcblk0p18      8080     288      7792   4% /persdata/
+
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 39845888
-BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 3221225472
-#original system size = 3565158400, but some times device had diff system size (us-eu), better decrease a bit
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 11918534245
-BOARD_CACHEIMAGE_PARTITION_SIZE    := 209715200
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 2867200000
+#original system size = 3047178240, better decrease a bit
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 11743211520
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 202211328
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE  := ext4
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-# Use these flags if the board has a ext4 partition larger than 2gb
-BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -102,6 +109,7 @@ BOARD_USE_SAMSUNG_CAMERAFORMAT_NV21 := true
 
 # Graphics
 USE_OPENGL_RENDERER := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # HDMI
 BOARD_HDMI_INCAPABLE := true
@@ -182,3 +190,6 @@ BOARD_SECCOMP_POLICY += $(LOCAL_PATH)/seccomp
 
 # SELinux
 BOARD_SEPOLICY_DIRS := $(LOCAL_PATH)/sepolicy
+
+# Inherit from the proprietary version
+-include vendor/samsung/gtaxllte/BoardConfigVendor.mk
